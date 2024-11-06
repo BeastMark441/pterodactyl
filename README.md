@@ -18,8 +18,9 @@
 - Распакуйте на своём устройстве папки.
 - Загрузите папки в свою панель _(/var/www/pterodactyl/ стандартное расположение)_ и произведите замену.
 
-![Авторизация](https://github.com/BeastMark441/pterodactyl/blob/master/.git/login.png?raw=true)
-![Главная](https://github.com/BeastMark441/pterodactyl/blob/master/.git/home.png?raw=true)
-![Админка](https://github.com/BeastMark441/pterodactyl/blob/master/.git/admin.png?raw=true)
-![Консоль](https://github.com/BeastMark441/pterodactyl/blob/master/.git/console.png?raw=true)
-![Файловый Менаджер](https://github.com/BeastMark441/pterodactyl/blob/master/.git/filemanager.png?raw=true)
+
+![admin](https://github.com/user-attachments/assets/0728dd8b-d31c-46ce-9c17-7c803afec6fe)
+![console](https://github.com/user-attachments/assets/8721d71f-932f-49cd-9a80-9552559ec2c6)
+![filemanager](https://github.com/user-attachments/assets/da7f4a42-bca2-469f-b592-30e4bca12e05)
+![home](https://github.com/user-attachments/assets/f1cdb907-daa0-4963-b58c-48f5235a3e53)
+![login](https://github.com/user-attachments/assets/761ce657-9b5e-4c79-aa3b-e81dd718b8d6)
