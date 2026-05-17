@@ -34,7 +34,7 @@ class ServerInstallController extends Controller
         $egg = $server->egg;
 
         if (! $server->node->is($request->attributes->get('node'))) {
-            throw new HttpForbiddenException('Requesting node does not have permission to access this server.');
+            throw new HttpForbiddenException('Запрашивающий узел не имеет разрешения на доступ к этому серверу.');
         }
 
         return new JsonResponse([
@@ -56,7 +56,7 @@ class ServerInstallController extends Controller
         $status = null;
 
         if (! $server->node->is($request->attributes->get('node'))) {
-            throw new HttpForbiddenException('Requesting node does not have permission to access this server.');
+            throw new HttpForbiddenException('Запрашивающий узел не имеет разрешения на доступ к этому серверу.');
         }
 
         // Make sure the type of failure is accurate

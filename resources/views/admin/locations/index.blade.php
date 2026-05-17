@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
 @section('title')
-    Locations
+    Локации
 @endsection
 
 @section('content-header')
-    <h1>Locations<small>All locations that nodes can be assigned to for easier categorization.</small></h1>
+    <h1>Локации<small>Все локации, к которым можно привязать узлы для удобной категоризации.</small></h1>
     <ol class="breadcrumb">
-        <li><a href="{{ route('admin.index') }}">Admin</a></li>
-        <li class="active">Locations</li>
+        <li><a href="{{ route('admin.index') }}">Админ</a></li>
+        <li class="active">Локации</li>
     </ol>
 @endsection
 
@@ -17,9 +17,9 @@
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Location List</h3>
+                <h3 class="box-title">Список локаций</h3>
                 <div class="box-tools">
-                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#newLocationModal">Create New</button>
+                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#newLocationModal">Создать новую</button>
                 </div>
             </div>
             <div class="box-body table-responsive no-padding">
@@ -27,10 +27,10 @@
                     <tbody>
                         <tr>
                             <th>ID</th>
-                            <th>Short Code</th>
-                            <th>Description</th>
-                            <th class="text-center">Nodes</th>
-                            <th class="text-center">Servers</th>
+                            <th>Короткий код</th>
+                            <th>Описание</th>
+                            <th class="text-center">Узлы</th>
+                            <th class="text-center">Сервера</th>
                         </tr>
                         @foreach ($locations as $location)
                             <tr>
@@ -53,26 +53,26 @@
             <form action="{{ route('admin.locations') }}" method="POST">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Create Location</h4>
+                    <h4 class="modal-title">Создать локацию</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="pShortModal" class="form-label">Short Code</label>
+                            <label for="pShortModal" class="form-label">Короткий код</label>
                             <input type="text" name="short" id="pShortModal" class="form-control" />
-                            <p class="text-muted small">A short identifier used to distinguish this location from others. Must be between 1 and 60 characters, for example, <code>us.nyc.lvl3</code>.</p>
+                            <p class="text-muted small">Короткий идентификатор для отличия этой локации от других. Должен быть от 1 до 60 символов, например, <code>ru.msk.m9</code>.</p>
                         </div>
                         <div class="col-md-12">
-                            <label for="pLongModal" class="form-label">Description</label>
+                            <label for="pLongModal" class="form-label">Описание</label>
                             <textarea name="long" id="pLongModal" class="form-control" rows="4"></textarea>
-                            <p class="text-muted small">A longer description of this location. Must be less than 191 characters.</p>
+                            <p class="text-muted small">Более длинное описание этой локации. Должно быть короче 191 символа.</p>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     {!! csrf_field() !!}
-                    <button type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-success btn-sm">Create</button>
+                    <button type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal">Отмена</button>
+                    <button type="submit" class="btn btn-success btn-sm">Создать</button>
                 </div>
             </form>
         </div>

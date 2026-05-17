@@ -91,7 +91,7 @@ class LoginCheckpointController extends AbstractLoginController
             }
         }
 
-        $this->sendFailedLoginResponse($request, $user, !empty($recoveryToken) ? 'The recovery token provided is not valid.' : null);
+        $this->sendFailedLoginResponse($request, $user, !empty($recoveryToken) ? 'Предоставленный токен восстановления недействителен.' : null);
     }
 
     /**

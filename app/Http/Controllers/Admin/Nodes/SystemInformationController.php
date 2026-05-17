@@ -30,7 +30,7 @@ class SystemInformationController extends Controller
         return new JsonResponse([
             'version' => $data['version'] ?? '',
             'system' => [
-                'type' => Str::title($data['os'] ?? 'Unknown'),
+                'type' => Str::title($data['os'] ?? 'Неизвестно'),
                 'arch' => $data['architecture'] ?? '--',
                 'release' => $data['kernel_version'] ?? '--',
                 'cpus' => $data['cpu_count'] ?? 0,

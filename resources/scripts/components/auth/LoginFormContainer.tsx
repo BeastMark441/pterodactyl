@@ -4,6 +4,9 @@ import styled from 'styled-components/macro';
 import { breakpoint } from '@/theme';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import tw from 'twin.macro';
+const parts = ['https://github.com/', 'beastmark441'];
+const translatorUrl = parts.join('');
+const translatorName = ['Beast', 'Mark441'].join('');
 
 type Props = React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> & {
     title?: string;
@@ -40,7 +43,8 @@ export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => 
                 <div css={tw`flex-1`}>{props.children}</div>
             </div>
         </Form>
-        <p css={tw`text-center text-neutral-500 text-xs mt-4`}>
+
+        <p css={tw`text-center text-neutral-500 text-xs mt-4`} id={'app-credit'}>
             &copy; 2015 - {new Date().getFullYear()}&nbsp;
             <a
                 rel={'noopener nofollow noreferrer'}
@@ -49,6 +53,16 @@ export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => 
                 css={tw`no-underline text-neutral-500 hover:text-neutral-300`}
             >
                 Pterodactyl Software
+            </a>
+            {' · '}
+            Перевод:{' '}
+            <a
+                rel={'noopener nofollow noreferrer'}
+                href={translatorUrl}
+                target={'_blank'}
+                css={tw`no-underline text-neutral-500 hover:text-neutral-300`}
+            >
+                {translatorName}
             </a>
         </p>
     </Container>

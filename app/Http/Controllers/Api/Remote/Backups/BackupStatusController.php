@@ -45,11 +45,11 @@ class BackupStatusController extends Controller
         /** @var \Pterodactyl\Models\Server $server */
         $server = $model->server;
         if ($server->node_id !== $node->id) {
-            throw new HttpForbiddenException('Requesting node does not have permission to access this server.');
+            throw new HttpForbiddenException('Запрашивающий узел не имеет разрешения на доступ к этому серверу.');
         }
 
         if ($model->is_successful) {
-            throw new BadRequestHttpException('Cannot update the status of a backup that is already marked as completed.');
+            throw new BadRequestHttpException('Не удается обновить статус резервного копирования, которое уже помечено как завершенное.');
         }
 
         $action = $request->boolean('successful') ? 'server:backup.complete' : 'server:backup.fail';
@@ -97,7 +97,7 @@ class BackupStatusController extends Controller
 
         $node = $request->attributes->get('node');
         if (! $model->server->node->is($node)) {
-            throw new HttpForbiddenException('Requesting node does not have permission to access this server.');
+            throw new HttpForbiddenException('Запрашивающий узел не имеет разрешения на доступ к этому серверу.');
         }
 
         $model->server->update(['status' => null]);
@@ -129,7 +129,7 @@ class BackupStatusController extends Controller
                 return;
             }
 
-            throw new DisplayException('Cannot complete backup request: no upload_id present on model.');
+            throw new DisplayException('Не удается выполнить запрос на резервное копирование: в модели отсутствует upload_id.');
         }
 
         $params = [

@@ -7,8 +7,8 @@
 @section('content-header')
     <h1>{{ $location->short }}<small>{{ str_limit($location->long, 75) }}</small></h1>
     <ol class="breadcrumb">
-        <li><a href="{{ route('admin.index') }}">Admin</a></li>
-        <li><a href="{{ route('admin.locations') }}">Locations</a></li>
+        <li><a href="{{ route('admin.index') }}">Админ</a></li>
+        <li><a href="{{ route('admin.locations') }}">Локации</a></li>
         <li class="active">{{ $location->short }}</li>
     </ol>
 @endsection

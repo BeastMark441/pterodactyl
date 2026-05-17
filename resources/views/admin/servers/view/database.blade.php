@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
 @section('title')
-    Server — {{ $server->name }}: Databases
+    Сервер — {{ $server->name }}: Базы данных
 @endsection
 
 @section('content-header')
-    <h1>{{ $server->name }}<small>Manage server databases.</small></h1>
+    <h1>{{ $server->name }}<small>Управление базами данных сервера.</small></h1>
     <ol class="breadcrumb">
-        <li><a href="{{ route('admin.index') }}">Admin</a></li>
-        <li><a href="{{ route('admin.servers') }}">Servers</a></li>
+        <li><a href="{{ route('admin.index') }}">Админ</a></li>
+        <li><a href="{{ route('admin.servers') }}">Сервера</a></li>
         <li><a href="{{ route('admin.servers.view', $server->id) }}">{{ $server->name }}</a></li>
-        <li class="active">Databases</li>
+        <li class="active">Базы данных</li>
     </ol>
 @endsection
 
@@ -19,20 +19,20 @@
 <div class="row">
     <div class="col-sm-7">
         <div class="alert alert-info">
-            Database passwords can be viewed when <a href="/server/{{ $server->uuidShort }}/databases">visiting this server</a> on the front-end.
+            Пароли баз данных можно просмотреть при <a href="/server/{{ $server->uuidShort }}/databases">переходе к этому серверу</a> на стороне клиентской панели.
         </div>
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Active Databases</h3>
+                <h3 class="box-title">Активные базы данных</h3>
             </div>
             <div class="box-body table-responsible no-padding">
                 <table class="table table-hover">
                     <tr>
-                        <th>Database</th>
-                        <th>Username</th>
-                        <th>Connections From</th>
-                        <th>Host</th>
-                        <th>Max Connections</th>
+                        <th>База данных</th>
+                        <th>Имя пользователя</th>
+                        <th>Подключения с</th>
+                        <th>Хост</th>
+                        <th>Макс. подключений</th>
                         <th></th>
                     </tr>
                     @foreach($server->databases as $database)
@@ -44,7 +44,7 @@
                             @if($database->max_connections != null)
                                 <td>{{ $database->max_connections }}</td>
                             @else
-                                <td>Unlimited</td>
+                                <td>Без ограничений</td>
                             @endif
                             <td class="text-center">
                                 <button data-action="reset-password" data-id="{{ $database->id }}" class="btn btn-xs btn-primary"><i class="fa fa-refresh"></i></button>
@@ -59,41 +59,41 @@
     <div class="col-sm-5">
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">Create New Database</h3>
+                <h3 class="box-title">Создать новую базу данных</h3>
             </div>
             <form action="{{ route('admin.servers.view.database', $server->id) }}" method="POST">
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="pDatabaseHostId" class="control-label">Database Host</label>
+                        <label for="pDatabaseHostId" class="control-label">Хост базы данных</label>
                         <select id="pDatabaseHostId" name="database_host_id" class="form-control">
                             @foreach($hosts as $host)
                                 <option value="{{ $host->id }}">{{ $host->name }}</option>
                             @endforeach
                         </select>
-                        <p class="text-muted small">Select the host database server that this database should be created on.</p>
+                        <p class="text-muted small">Выберите сервер базы данных, на котором должна быть создана эта база.</p>
                     </div>
                     <div class="form-group">
-                        <label for="pDatabaseName" class="control-label">Database</label>
+                        <label for="pDatabaseName" class="control-label">База данных</label>
                         <div class="input-group">
                             <span class="input-group-addon">s{{ $server->id }}_</span>
                             <input id="pDatabaseName" type="text" name="database" class="form-control" placeholder="database" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="pRemote" class="control-label">Connections</label>
+                        <label for="pRemote" class="control-label">Подключения</label>
                         <input id="pRemote" type="text" name="remote" class="form-control" value="%" />
-                        <p class="text-muted small">This should reflect the IP address that connections are allowed from. Uses standard MySQL notation. If unsure leave as <code>%</code>.</p>
+                        <p class="text-muted small">Это должно соответствовать IP-адресу, с которого разрешены подключения. Используется стандартная нотация MySQL. Если не уверены — оставьте <code>%</code>.</p>
                     </div>
                     <div class="form-group">
-                        <label for="pmax_connections" class="control-label">Concurrent Connections</label>
+                        <label for="pmax_connections" class="control-label">Одновременные подключения</label>
                         <input id="pmax_connections" type="text" name="max_connections" class="form-control"/>
-                        <p class="text-muted small">This should reflect the max number of concurrent connections from this user to the database. Leave empty for unlimited.</p>
+                        <p class="text-muted small">Это значение должно определять максимальное число одновременных подключений этого пользователя к базе данных. Оставьте пустым для режима без ограничений.</p>
                     </div>
                 </div>
                 <div class="box-footer">
                     {!! csrf_field() !!}
-                    <p class="text-muted small no-margin">A username and password for this database will be randomly generated after form submission.</p>
-                    <input type="submit" class="btn btn-sm btn-success pull-right" value="Create Database" />
+                    <p class="text-muted small no-margin">Имя пользователя и пароль для этой базы данных будут случайно сгенерированы после отправки формы.</p>
+                    <input type="submit" class="btn btn-sm btn-success pull-right" value="Создать базу данных" />
                 </div>
             </form>
         </div>
@@ -111,9 +111,9 @@
         swal({
             title: '',
             type: 'warning',
-            text: 'Are you sure that you want to delete this database? There is no going back, all data will immediately be removed.',
+            text: 'Вы уверены, что хотите удалить эту базу данных? Отменить это действие невозможно, все данные будут немедленно удалены.',
             showCancelButton: true,
-            confirmButtonText: 'Delete',
+            confirmButtonText: 'Удалить',
             confirmButtonColor: '#d9534f',
             closeOnConfirm: false,
             showLoaderOnConfirm: true,
@@ -129,8 +129,8 @@
                 console.error(jqXHR);
                 swal({
                     type: 'error',
-                    title: 'Whoops!',
-                    text: (typeof jqXHR.responseJSON.error !== 'undefined') ? jqXHR.responseJSON.error : 'An error occurred while processing this request.'
+                    title: 'Упс!',
+                    text: (typeof jqXHR.responseJSON.error !== 'undefined') ? jqXHR.responseJSON.error : 'Во время обработки этого запроса произошла ошибка.'
                 });
             });
         });
@@ -148,17 +148,17 @@
             swal({
                 type: 'success',
                 title: '',
-                text: 'The password for this database has been reset.',
+                text: 'Пароль для этой базы данных был сброшен.',
             });
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error(jqXHR);
-            var error = 'An error occurred while trying to process this request.';
+            var error = 'Произошла ошибка при обработке этого запроса.';
             if (typeof jqXHR.responseJSON !== 'undefined' && typeof jqXHR.responseJSON.error !== 'undefined') {
                 error = jqXHR.responseJSON.error;
             }
             swal({
                 type: 'error',
-                title: 'Whoops!',
+                title: 'Упс!',
                 text: error
             });
         }).always(function () {

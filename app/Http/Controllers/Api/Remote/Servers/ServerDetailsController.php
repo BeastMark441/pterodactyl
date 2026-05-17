@@ -50,7 +50,7 @@ class ServerDetailsController extends Controller
             : $node->id === $server->node_id;
 
         if (! $valid) {
-            throw new HttpForbiddenException('Requesting node does not have permission to access this server.');
+            throw new HttpForbiddenException('Запрашивающий узел не имеет разрешения на доступ к этому серверу.');
         }
 
         return new JsonResponse([

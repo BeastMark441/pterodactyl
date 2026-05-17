@@ -40,7 +40,7 @@ class BackupRemoteUploadController extends Controller
         // Get the size query parameter.
         $size = (int) $request->query('size');
         if (empty($size)) {
-            throw new BadRequestHttpException('A non-empty "size" query parameter must be provided.');
+            throw new BadRequestHttpException('Должен быть указан непустой параметр запроса "размер".');
         }
 
         $model = Backup::query()->where('uuid', $backup)->firstOrFail();
@@ -49,19 +49,19 @@ class BackupRemoteUploadController extends Controller
         // from messing with backups that they don't own.
         $server = $model->server;
         if ($server->node_id !== $node->id) {
-            throw new HttpForbiddenException('Requesting node does not have permission to access this server.');
+            throw new HttpForbiddenException('Запрашивающий узел не имеет разрешения на доступ к этому серверу.');
         }
 
         // Prevent backups that have already been completed from trying to
         // be uploaded again.
         if (!is_null($model->completed_at)) {
-            throw new ConflictHttpException('This backup is already in a completed state.');
+            throw new ConflictHttpException('Эта резервная копия уже находится в завершенном состоянии.');
         }
 
         // Ensure we are using the S3 adapter.
         $adapter = $this->backupManager->adapter();
         if (!$adapter instanceof S3Filesystem) {
-            throw new BadRequestHttpException('The configured backup adapter is not an S3 compatible adapter.');
+            throw new BadRequestHttpException('Настроенный адаптер резервного копирования не является адаптером, совместимым с S3.');
         }
 
         // The path where backup will be uploaded to

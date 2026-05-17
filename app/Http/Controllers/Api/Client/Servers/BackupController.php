@@ -171,7 +171,7 @@ class BackupController extends ClientApiController
         }
 
         if ($backup->disk !== Backup::ADAPTER_AWS_S3 && $backup->disk !== Backup::ADAPTER_WINGS) {
-            throw new BadRequestHttpException('The backup requested references an unknown disk driver type and cannot be downloaded.');
+            throw new BadRequestHttpException('Запрошенная резервная копия ссылается на неизвестный тип драйвера диска и не может быть загружена.');
         }
 
         $url = $this->downloadLinkService->handle($backup, $request->user());
@@ -200,11 +200,11 @@ class BackupController extends ClientApiController
         // Cannot restore a backup unless a server is fully installed and not currently
         // processing a different backup restoration request.
         if (!is_null($server->status)) {
-            throw new BadRequestHttpException('This server is not currently in a state that allows for a backup to be restored.');
+            throw new BadRequestHttpException('В настоящее время этот сервер не находится в состоянии, позволяющем восстановить резервную копию.');
         }
 
         if (!$backup->is_successful && is_null($backup->completed_at)) {
-            throw new BadRequestHttpException('This backup cannot be restored at this time: not completed or failed.');
+            throw new BadRequestHttpException('В данный момент эта резервная копия не может быть восстановлена: она не завершена или произошел сбой.');
         }
 
         $log = Activity::event('server:backup.restore')

@@ -55,9 +55,9 @@ class StartupController extends ClientApiController
         $variable = $server->variables()->where('env_variable', $request->input('key'))->first();
 
         if (is_null($variable) || !$variable->user_viewable) {
-            throw new BadRequestHttpException('The environment variable you are trying to edit does not exist.');
+            throw new BadRequestHttpException('Переменная окружения, которую вы пытаетесь отредактировать, не существует.');
         } elseif (!$variable->user_editable) {
-            throw new BadRequestHttpException('The environment variable you are trying to edit is read-only.');
+            throw new BadRequestHttpException('Переменная окружения, которую вы пытаетесь отредактировать, доступна только для чтения.');
         }
 
         $original = $variable->server_value;
