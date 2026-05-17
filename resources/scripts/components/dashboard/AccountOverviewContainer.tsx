@@ -30,7 +30,7 @@ export default () => {
     const { state } = useLocation<undefined | { twoFactorRedirect?: boolean }>();
 
     return (
-        <PageContentBlock title={'Account Overview'}>
+        <PageContentBlock title={'Обзор Аккаунта'}>
             {state?.twoFactorRedirect && (
                 <MessageBox title={'Требуется 2-й фактор'} type={'error'}>
                     Для продолжения работы в вашей учетной записи должна быть включена двухфакторная аутентификация.

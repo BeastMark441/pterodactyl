@@ -42,7 +42,7 @@ export default () => {
     };
 
     return (
-        <PageContentBlock title={'Account API'}>
+        <PageContentBlock title={'API Аккаунта'}>
             <FlashMessageRender byKey={'account'} />
             <div css={tw`md:flex flex-nowrap my-10`}>
                 <ContentBox title={'Создать ключ API'} css={tw`flex-none w-full md:w-1/2`}>

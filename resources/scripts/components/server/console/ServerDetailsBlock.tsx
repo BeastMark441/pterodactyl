@@ -98,10 +98,14 @@ const ServerDetailsBlock = ({ className }: { className?: string }) => {
                 title={'Аптайм'}
                 color={getBackgroundColor(status === 'running' ? 0 : status !== 'offline' ? 9 : 10, 10)}
             >
-                {status === null ? (
+                {status === null || status === 'offline' ? (
                     'Офлайн'
                 ) : stats.uptime > 0 ? (
                     <UptimeDuration uptime={stats.uptime / 1000} />
+                ) : status === 'starting' ? (
+                    'Запускается'
+                ) : status === 'stopping' ? (
+                    'Останавливается'
                 ) : (
                     capitalize(status)
                 )}
