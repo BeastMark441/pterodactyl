@@ -50,35 +50,37 @@ const SteamDiskSpaceFeature = () => {
             {isAdmin ? (
                 <>
                     <div css={tw`mt-4 sm:flex items-center`}>
-                        <h2 css={tw`text-2xl mb-4 text-neutral-100 `}>Out of available disk space...</h2>
+                        <h2 css={tw`text-2xl mb-4 text-neutral-100 `}>Недостаточно свободного места на диске...</h2>
                     </div>
                     <p css={tw`mt-4`}>
-                        This server has run out of available disk space and cannot complete the install or update
-                        process.
+                        На этом сервере закончилось свободное место на диске, и он не может завершить процесс установки
+                        или обновления.
                     </p>
                     <p css={tw`mt-4`}>
-                        Ensure the machine has enough disk space by typing{' '}
-                        <code css={tw`font-mono bg-neutral-900 rounded py-1 px-2`}>df -h</code> on the machine hosting
-                        this server. Delete files or increase the available disk space to resolve the issue.
+                        Убедитесь, что на машине достаточно места на диске, выполнив команду{' '}
+                        <code css={tw`font-mono bg-neutral-900 rounded py-1 px-2`}>df -h</code> на машине, где
+                        размещён этот сервер. Удалите файлы или увеличьте доступное дисковое пространство, чтобы
+                        решить эту проблему.
                     </p>
                     <div css={tw`mt-8 sm:flex items-center justify-end`}>
                         <Button onClick={() => setVisible(false)} css={tw`w-full sm:w-auto border-transparent`}>
-                            Close
+                            Закрыть
                         </Button>
                     </div>
                 </>
             ) : (
                 <>
                     <div css={tw`mt-4 sm:flex items-center`}>
-                        <h2 css={tw`text-2xl mb-4 text-neutral-100`}>Out of available disk space...</h2>
+                        <h2 css={tw`text-2xl mb-4 text-neutral-100`}>Недостаточно свободного места на диске...</h2>
                     </div>
                     <p css={tw`mt-4`}>
-                        This server has run out of available disk space and cannot complete the install or update
-                        process. Please get in touch with the administrator(s) and inform them of disk space issues.
+                        На этом сервере закончилось свободное место на диске, и он не может завершить процесс установки
+                        или обновления. Пожалуйста, свяжитесь с администратором и сообщите ему о проблеме с местом на
+                        диске.
                     </p>
                     <div css={tw`mt-8 sm:flex items-center justify-end`}>
                         <Button onClick={() => setVisible(false)} css={tw`w-full sm:w-auto border-transparent`}>
-                            Close
+                            Закрыть
                         </Button>
                     </div>
                 </>

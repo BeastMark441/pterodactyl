@@ -27,7 +27,7 @@ class EggExporterService
         $egg = $this->repository->getWithExportAttributes($egg);
 
         $struct = [
-            '_comment' => 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO',
+            '_comment' => 'НЕ РЕДАКТИРУЙТЕ: ФАЙЛ, АВТОМАТИЧЕСКИ СГЕНЕРИРОВАН ПАНЕЛЬЮ PTERODACTYL - PTERODACTYL.IO',
             'meta' => [
                 'version' => Egg::EXPORT_VERSION,
                 'update_url' => $egg->update_url,

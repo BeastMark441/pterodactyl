@@ -57,7 +57,7 @@ export default () => {
             {rootAdmin && (
                 <div css={tw`mb-2 flex justify-end items-center`}>
                     <p css={tw`uppercase text-xs text-neutral-400 mr-2`}>
-                        {showOnlyAdmin ? "Showing others' servers" : 'Showing your servers'}
+                        {showOnlyAdmin ? "Отображение чужих серверов" : 'Отображение ваших серверов'}
                     </p>
                     <Switch
                         name={'show_all_servers'}
@@ -78,8 +78,8 @@ export default () => {
                         ) : (
                             <p css={tw`text-center text-sm text-neutral-400`}>
                                 {showOnlyAdmin
-                                    ? 'There are no other servers to display.'
-                                    : 'There are no servers associated with your account.'}
+                                    ? 'Других серверов для отображения нет.'
+                                    : 'С вашей учетной записью не связаны никакие серверы.'}
                             </p>
                         )
                     }

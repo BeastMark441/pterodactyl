@@ -17,8 +17,8 @@ export default () => {
     const previous = useRef<Record<'tx' | 'rx', number>>({ tx: -1, rx: -1 });
 
     const cpu = useChartTickLabel('CPU', limits.cpu, '%', 2);
-    const memory = useChartTickLabel('Memory', limits.memory, 'MiB');
-    const network = useChart('Network', {
+    const memory = useChartTickLabel('Память', limits.memory, 'MiB');
+    const network = useChart('Сеть', {
         sets: 2,
         options: {
             scales: {
@@ -34,7 +34,7 @@ export default () => {
         callback(opts, index) {
             return {
                 ...opts,
-                label: !index ? 'Network In' : 'Network Out',
+                label: !index ? 'Входящий трафик' : 'Исходящий трафик',
                 borderColor: !index ? theme('colors.cyan.400') : theme('colors.yellow.400'),
                 backgroundColor: hexToRgba(!index ? theme('colors.cyan.700') : theme('colors.yellow.700'), 0.5),
             };
@@ -68,20 +68,20 @@ export default () => {
 
     return (
         <>
-            <ChartBlock title={'CPU Load'}>
+            <ChartBlock title={'Нагрузка CPU'}>
                 <Line {...cpu.props} />
             </ChartBlock>
-            <ChartBlock title={'Memory'}>
+            <ChartBlock title={'Память'}>
                 <Line {...memory.props} />
             </ChartBlock>
             <ChartBlock
-                title={'Network'}
+                title={'Сеть'}
                 legend={
                     <>
-                        <Tooltip arrow content={'Inbound'}>
+                        <Tooltip arrow content={'Входящий'}>
                             <CloudDownloadIcon className={'mr-2 w-4 h-4 text-yellow-400'} />
                         </Tooltip>
-                        <Tooltip arrow content={'Outbound'}>
+                        <Tooltip arrow content={'Исходящий'}>
                             <CloudUploadIcon className={'w-4 h-4 text-cyan-400'} />
                         </Tooltip>
                     </>

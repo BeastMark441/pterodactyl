@@ -94,10 +94,11 @@ export default () => {
             {hash.replace(/^#/, '').endsWith('.pteroignore') && (
                 <div css={tw`mb-4 p-4 border-l-4 bg-neutral-900 rounded border-cyan-400`}>
                     <p css={tw`text-neutral-300 text-sm`}>
-                        You&apos;re editing a <code css={tw`font-mono bg-black rounded py-px px-1`}>.pteroignore</code>{' '}
-                        file. Any files or directories listed in here will be excluded from backups. Wildcards are
-                        supported by using an asterisk (<code css={tw`font-mono bg-black rounded py-px px-1`}>*</code>).
-                        You can negate a prior rule by prepending an exclamation point (
+                        Вы редактируете файл <code css={tw`font-mono bg-black rounded py-px px-1`}>.pteroignore</code>.
+                        Все файлы и каталоги, перечисленные здесь, будут исключены из резервных копий. Поддерживаются
+                        подстановочные символы с использованием звёздочки (
+                        <code css={tw`font-mono bg-black rounded py-px px-1`}>*</code>). Вы можете отменить предыдущее
+                        правило, добавив в начале восклицательный знак (
                         <code css={tw`font-mono bg-black rounded py-px px-1`}>!</code>).
                     </p>
                 </div>
@@ -142,13 +143,13 @@ export default () => {
                 {action === 'edit' ? (
                     <Can action={'file.update'}>
                         <Button css={tw`flex-1 sm:flex-none`} onClick={() => save()}>
-                            Save Content
+                            Сохранить содержимое
                         </Button>
                     </Can>
                 ) : (
                     <Can action={'file.create'}>
                         <Button css={tw`flex-1 sm:flex-none`} onClick={() => setModalVisible(true)}>
-                            Create File
+                            Создать файл
                         </Button>
                     </Can>
                 )}

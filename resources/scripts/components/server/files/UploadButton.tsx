@@ -65,7 +65,7 @@ export default ({ className }: WithClassname) => {
         clearAndAddHttpError();
         const list = Array.from(files);
         if (list.some((file) => !file.type && (!file.size || file.size === 4096))) {
-            return addError('Folder uploads are not supported.', 'Error');
+            return addError('Загрузка папок не поддерживается.', 'Error');
         }
 
         const uploads = list.map((file) => {
@@ -125,7 +125,7 @@ export default ({ className }: WithClassname) => {
                             >
                                 <CloudUploadIcon className={'w-10 h-10 flex-shrink-0'} />
                                 <p className={'font-header flex-1 text-lg text-neutral-100 text-center'}>
-                                    Drag and drop files to upload.
+                                    Перетяните сюда файлы для загрузки.
                                 </p>
                             </div>
                         </div>
@@ -147,7 +147,7 @@ export default ({ className }: WithClassname) => {
                 multiple
             />
             <Button className={className} onClick={() => fileUploadInput.current && fileUploadInput.current.click()}>
-                Upload
+                Загрузить
             </Button>
         </>
     );

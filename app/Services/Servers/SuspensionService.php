@@ -39,7 +39,7 @@ class SuspensionService
 
         // Check if the server is currently being transferred.
         if (!is_null($server->transfer)) {
-            throw new ConflictHttpException('Cannot toggle suspension status on a server that is currently being transferred.');
+            throw new ConflictHttpException('Не удается переключить статус приостановки на сервере, который в данный момент переносится.');
         }
 
         // Update the server's suspension status.

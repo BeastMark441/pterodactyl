@@ -21,7 +21,7 @@ interface Values {
 }
 
 const schema = object().shape({
-    directoryName: string().required('A valid directory name must be provided.'),
+    directoryName: string().required('Необходимо указать действительное имя каталога.'),
 });
 
 const generateDirectoryData = (name: string): FileObject => ({
@@ -40,7 +40,7 @@ const generateDirectoryData = (name: string): FileObject => ({
 });
 
 const NewDirectoryDialog = asDialog({
-    title: 'Create Directory',
+    title: 'Создать Каталог',
 })(() => {
     const uuid = ServerContext.useStoreState((state) => state.server.data!.uuid);
     const directory = ServerContext.useStoreState((state) => state.files.directory);
@@ -71,9 +71,9 @@ const NewDirectoryDialog = asDialog({
                 <>
                     <FlashMessageRender key={'files:directory-modal'} />
                     <Form css={tw`m-0`}>
-                        <Field autoFocus id={'directoryName'} name={'directoryName'} label={'Name'} />
+                        <Field autoFocus id={'directoryName'} name={'directoryName'} label={'Имя каталога'} />
                         <p css={tw`mt-2 text-sm md:text-base break-all`}>
-                            <span css={tw`text-neutral-200`}>This directory will be created as&nbsp;</span>
+                            <span css={tw`text-neutral-200`}>Этот каталог будет создан следующим образом&nbsp;</span>
                             <Code>
                                 /home/container/
                                 <span css={tw`text-cyan-200`}>
@@ -84,10 +84,10 @@ const NewDirectoryDialog = asDialog({
                     </Form>
                     <Dialog.Footer>
                         <Button.Text className={'w-full sm:w-auto'} onClick={close}>
-                            Cancel
+                            Закрыть
                         </Button.Text>
                         <Button className={'w-full sm:w-auto'} onClick={submitForm}>
-                            Create
+                            Создать
                         </Button>
                     </Dialog.Footer>
                 </>
@@ -103,7 +103,7 @@ export default ({ className }: WithClassname) => {
         <>
             <NewDirectoryDialog open={open} onClose={setOpen.bind(this, false)} />
             <Button.Text onClick={setOpen.bind(this, true)} className={className}>
-                Create Directory
+                Создать Каталог
             </Button.Text>
         </>
     );

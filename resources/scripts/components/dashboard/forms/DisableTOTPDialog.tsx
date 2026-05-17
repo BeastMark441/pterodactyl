@@ -51,11 +51,11 @@ const DisableTOTPDialog = () => {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.currentTarget.value)}
             />
             <Dialog.Footer>
-                <Button.Text onClick={close}>Cancel</Button.Text>
+                <Button.Text onClick={close}>Закрыть</Button.Text>
                 <Tooltip
                     delay={100}
                     disabled={password.length > 0}
-                    content={'You must enter your account password to continue.'}
+                    content={'Вы должны ввести пароль своей учетной записи, чтобы продолжить.'}
                 >
                     <Button.Danger type={'submit'} form={'disable-totp-form'} disabled={submitting || !password.length}>
                         Disable
@@ -67,6 +67,6 @@ const DisableTOTPDialog = () => {
 };
 
 export default asDialog({
-    title: 'Disable Two-Step Verification',
-    description: 'Disabling two-step verification will make your account less secure.',
+    title: 'Отключить двухэтапную проверку',
+    description: 'Отключение двухэтапной верификации сделает вашу учетную запись менее защищенной.',
 })(DisableTOTPDialog);

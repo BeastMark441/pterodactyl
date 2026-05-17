@@ -36,19 +36,19 @@ export default ({ subuser }: { subuser: Subuser }) => {
     return (
         <>
             <ConfirmationModal
-                title={'Delete this subuser?'}
-                buttonText={'Yes, remove subuser'}
+                title={'Удалить этого доп.пользователя?'}
+                buttonText={'Да, удалить доп.пользователя'}
                 visible={showConfirmation}
                 showSpinnerOverlay={loading}
                 onConfirmed={() => doDeletion()}
                 onModalDismissed={() => setShowConfirmation(false)}
             >
-                Are you sure you wish to remove this subuser? They will have all access to this server revoked
-                immediately.
+                Вы уверены, что хотите удалить этого доп.пользователя? У него будет отозван весь доступ к этому серверу
+                немедленно.
             </ConfirmationModal>
             <button
                 type={'button'}
-                aria-label={'Delete subuser'}
+                aria-label={'Удалить доп.пользователя'}
                 css={tw`block text-sm p-2 text-neutral-500 hover:text-red-600 transition-colors duration-150`}
                 onClick={() => setShowConfirmation(true)}
             >

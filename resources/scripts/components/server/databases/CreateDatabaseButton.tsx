@@ -18,14 +18,14 @@ interface Values {
 
 const schema = object().shape({
     databaseName: string()
-        .required('A database name must be provided.')
-        .min(3, 'Database name must be at least 3 characters.')
-        .max(48, 'Database name must not exceed 48 characters.')
+        .required('Необходимо указать имя базы данных.')
+        .min(3, 'Имя базы данных должно содержать не менее 3 символов.')
+        .max(48, 'Имя базы данных не должно превышать 48 символов.')
         .matches(
             /^[\w\-.]{3,48}$/,
-            'Database name should only contain alphanumeric characters, underscores, dashes, and/or periods.'
+            'Имя базы данных должно содержать только буквы, цифры, подчёркивания, дефисы и/или точки.'
         ),
-    connectionsFrom: string().matches(/^[\w\-/.%:]+$/, 'A valid host address must be provided.'),
+    connectionsFrom: string().matches(/^[\w\-/.%:]+$/, 'Необходимо указать корректный адрес хоста.'),
 });
 
 export default () => {
@@ -69,23 +69,23 @@ export default () => {
                         }}
                     >
                         <FlashMessageRender byKey={'database:create'} css={tw`mb-6`} />
-                        <h2 css={tw`text-2xl mb-6`}>Create new database</h2>
+                        <h2 css={tw`text-2xl mb-6`}>Создать новую базу данных</h2>
                         <Form css={tw`m-0`}>
                             <Field
                                 type={'string'}
                                 id={'database_name'}
                                 name={'databaseName'}
-                                label={'Database Name'}
-                                description={'A descriptive name for your database instance.'}
+                                label={'Имя базы данных'}
+                                description={'Понятное название для вашего экземпляра базы данных.'}
                             />
                             <div css={tw`mt-6`}>
                                 <Field
                                     type={'string'}
                                     id={'connections_from'}
                                     name={'connectionsFrom'}
-                                    label={'Connections From'}
+                                    label={'Подключения с'}
                                     description={
-                                        'Where connections should be allowed from. Leave blank to allow connections from anywhere.'
+                                        'Откуда разрешены подключения. Оставьте пустым, чтобы разрешить подключения отовсюду.'
                                     }
                                 />
                             </div>
@@ -96,17 +96,17 @@ export default () => {
                                     css={tw`w-full sm:w-auto sm:mr-2`}
                                     onClick={() => setVisible(false)}
                                 >
-                                    Cancel
+                                    Отмена
                                 </Button>
                                 <Button css={tw`w-full mt-4 sm:w-auto sm:mt-0`} type={'submit'}>
-                                    Create Database
+                                    Создать базу данных
                                 </Button>
                             </div>
                         </Form>
                     </Modal>
                 )}
             </Formik>
-            <Button onClick={() => setVisible(true)}>New Database</Button>
+            <Button onClick={() => setVisible(true)}>Новая база данных</Button>
         </>
     );
 };

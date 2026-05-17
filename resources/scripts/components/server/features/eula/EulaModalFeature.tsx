@@ -67,7 +67,7 @@ const EulaModalFeature = () => {
             <FlashMessageRender key={'feature:eula'} css={tw`mb-4`} />
             <h2 css={tw`text-2xl mb-4 text-neutral-100`}>Принять Minecraft&reg; EULA</h2>
             <p css={tw`text-neutral-200`}>
-                Нажав {'"Принять"'} ниже, вы согласитесь с&nbsp;
+                Нажав кнопку {'"Принять"'} ниже, вы соглашаетесь с условиями&nbsp;
                 <a
                     target={'_blank'}
                     css={tw`text-primary-300 underline transition-colors duration-150 hover:text-primary-400`}

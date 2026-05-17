@@ -19,7 +19,7 @@ class FindViableNodesService
      */
     public function setLocations(array $locations): self
     {
-        Assert::allIntegerish($locations, 'An array of location IDs should be provided when calling setLocations.');
+        Assert::allIntegerish($locations, 'При вызове setLocations должен быть указан массив идентификаторов локаций.');
 
         $this->locations = $locations;
 
@@ -68,8 +68,8 @@ class FindViableNodesService
      */
     public function handle(?int $perPage = null, ?int $page = null): LengthAwarePaginator|Collection
     {
-        Assert::integer($this->disk, 'Disk space must be an int, got %s');
-        Assert::integer($this->memory, 'Memory usage must be an int, got %s');
+        Assert::integer($this->disk, 'Дисковое пространство должно быть int, получено %s');
+        Assert::integer($this->memory, 'Использование памяти должно быть int, получено %s');
 
         $query = Node::query()->select('nodes.*')
             ->selectRaw('IFNULL(SUM(servers.memory), 0) as sum_memory')

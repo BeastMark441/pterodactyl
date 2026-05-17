@@ -90,29 +90,29 @@ const EditScheduleModal = ({ schedule }: Props) => {
         >
             {({ isSubmitting }) => (
                 <Form>
-                    <h3 css={tw`text-2xl mb-6`}>{schedule ? 'Edit schedule' : 'Create new schedule'}</h3>
+                    <h3 css={tw`text-2xl mb-6`}>{schedule ? 'Редактировать Планировщик' : 'Создать Планировщик'}</h3>
                     <FlashMessageRender byKey={'schedule:edit'} css={tw`mb-6`} />
                     <Field
                         name={'name'}
-                        label={'Schedule name'}
-                        description={'A human readable identifier for this schedule.'}
+                        label={'Название Планировщика'}
+                        description={'Понятное человеку имя для этого планировщика.'}
                     />
                     <div css={tw`grid grid-cols-2 sm:grid-cols-5 gap-4 mt-6`}>
-                        <Field name={'minute'} label={'Minute'} />
-                        <Field name={'hour'} label={'Hour'} />
-                        <Field name={'dayOfMonth'} label={'Day of month'} />
-                        <Field name={'month'} label={'Month'} />
-                        <Field name={'dayOfWeek'} label={'Day of week'} />
+                        <Field name={'minute'} label={'Минута'} />
+                        <Field name={'hour'} label={'Час'} />
+                        <Field name={'dayOfMonth'} label={'День месяца'} />
+                        <Field name={'month'} label={'Месяц'} />
+                        <Field name={'dayOfWeek'} label={'День недели'} />
                     </div>
                     <p css={tw`text-neutral-400 text-xs mt-2`}>
-                        The schedule system supports the use of Cronjob syntax when defining when tasks should begin
-                        running. Use the fields above to specify when these tasks should begin running.
+                        Система планировщиков поддерживает использование синтаксиса Cronjob для определения времени запуска задач.
+                        Используйте поля выше, чтобы указать, когда эти задачи должны начинать выполняться.
                     </p>
                     <div css={tw`mt-6 bg-neutral-700 border border-neutral-800 shadow-inner p-4 rounded`}>
                         <Switch
                             name={'show_cheatsheet'}
-                            description={'Show the cron cheatsheet for some examples.'}
-                            label={'Show Cheatsheet'}
+                            description={'Показать шпаргалку по cron с примерами.'}
+                            label={'Показать шпаргалку'}
                             defaultChecked={showCheatsheet}
                             onChange={() => setShowCheetsheet((s) => !s)}
                         />
@@ -125,20 +125,20 @@ const EditScheduleModal = ({ schedule }: Props) => {
                     <div css={tw`mt-6 bg-neutral-700 border border-neutral-800 shadow-inner p-4 rounded`}>
                         <FormikSwitch
                             name={'onlyWhenOnline'}
-                            description={'Only execute this schedule when the server is in a running state.'}
-                            label={'Only When Server Is Online'}
+                            description={'Выполнять этот планировщик только тогда, когда сервер находится в запущенном состоянии.'}
+                            label={'Только когда сервер онлайн'}
                         />
                     </div>
                     <div css={tw`mt-6 bg-neutral-700 border border-neutral-800 shadow-inner p-4 rounded`}>
                         <FormikSwitch
                             name={'enabled'}
-                            description={'This schedule will be executed automatically if enabled.'}
-                            label={'Schedule Enabled'}
+                            description={'Если включено, этот планировщик будет выполняться автоматически.'}
+                            label={'Планировщик включен'}
                         />
                     </div>
                     <div css={tw`mt-6 text-right`}>
                         <Button className={'w-full sm:w-auto'} type={'submit'} disabled={isSubmitting}>
-                            {schedule ? 'Save changes' : 'Create schedule'}
+                            {schedule ? 'Сохранить изменения' : 'Создать Планировщик'}
                         </Button>
                     </div>
                 </Form>

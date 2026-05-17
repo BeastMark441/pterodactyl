@@ -55,7 +55,7 @@ class AssignmentService
             $parsed = Network::parse($underlying);
         } catch (\Exception $exception) {
             // @phpstan-ignore-next-line variable.undefined
-            throw new DisplayException("Could not parse provided allocation IP address ({$underlying}): {$exception->getMessage()}", $exception);
+            throw new DisplayException("Не удалось обработать указанный IP-адрес порта ({$underlying}): {$exception->getMessage()}", $exception);
         }
 
         $this->connection->beginTransaction();

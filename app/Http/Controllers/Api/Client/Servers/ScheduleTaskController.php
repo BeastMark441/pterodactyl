@@ -41,7 +41,7 @@ class ScheduleTaskController extends ClientApiController
     {
         $limit = config('pterodactyl.client_features.schedules.per_schedule_task_limit', 10);
         if ($schedule->tasks()->count() >= $limit) {
-            throw new ServiceLimitExceededException("С расписаниями может быть связано не более $limit задач. Создание этой задачи приведет к превышению лимита по этому расписанию.");
+            throw new ServiceLimitExceededException("С планировщиком может быть связано не более $limit задач. Создание этой задачи приведет к превышению лимита этого планировщика.");
         }
 
         if ($server->backup_limit === 0 && $request->action === 'backup') {

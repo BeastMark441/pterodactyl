@@ -68,7 +68,6 @@ export default () => {
     const isTransferring = ServerContext.useStoreState((state) => state.server.data!.isTransferring);
     const [history, setHistory] = usePersistedState<string[]>(`${serverId}:command_history`, []);
     const [historyIndex, setHistoryIndex] = useState(-1);
-    // SearchBarAddon has hardcoded z-index: 999 :(
     const zIndex = `
     .xterm-search-bar__addon {
         z-index: 10;
@@ -79,9 +78,8 @@ export default () => {
 
     const handleTransferStatus = (status: string) => {
         switch (status) {
-            // Sent by either the source or target node if a failure occurs.
             case 'failure':
-                terminal.writeln(TERMINAL_PRELUDE + 'Transfer has failed.\u001b[0m');
+                terminal.writeln(TERMINAL_PRELUDE + 'Перенос завершился с ошибкой.\u001b[0m');
                 return;
         }
     };
@@ -92,7 +90,7 @@ export default () => {
         );
 
     const handlePowerChangeEvent = (state: string) =>
-        terminal.writeln(TERMINAL_PRELUDE + 'Server marked as ' + state + '...\u001b[0m');
+        terminal.writeln(TERMINAL_PRELUDE + 'Сервер отмечен как ' + state + '...\u001b[0m');
 
     const handleCommandKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'ArrowUp') {
@@ -101,8 +99,6 @@ export default () => {
             setHistoryIndex(newIndex);
             e.currentTarget.value = history![newIndex] || '';
 
-            // By default up arrow will also bring the cursor to the start of the line,
-            // so we'll preventDefault to keep it at the end.
             e.preventDefault();
         }
 
@@ -134,13 +130,11 @@ export default () => {
 
             terminal.open(ref.current);
 
-            // Activate Unicode 11 for proper emoji and special character width handling
             terminal.unicode.activeVersion = '11';
 
             fitAddon.fit();
             searchBar.addNewStyle(zIndex);
 
-            // Add support for capturing keys
             terminal.attachCustomKeyEventHandler((e: KeyboardEvent) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
                     document.execCommand('copy');
@@ -178,7 +172,6 @@ export default () => {
         };
 
         if (connected && instance) {
-            // Do not clear the console if the server is being transferred.
             if (!isTransferring) {
                 terminal.clear();
             }
@@ -213,8 +206,8 @@ export default () => {
                     <input
                         className={classNames('peer', styles.command_input)}
                         type={'text'}
-                        placeholder={'Type a command...'}
-                        aria-label={'Console command input.'}
+                        placeholder={'Введите команду...'}
+                        aria-label={'Поле ввода команды консоли.'}
                         disabled={!instance || !connected}
                         onKeyDown={handleCommandKeyDown}
                         autoCorrect={'off'}
