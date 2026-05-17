@@ -4,9 +4,17 @@ import styled from 'styled-components/macro';
 import { breakpoint } from '@/theme';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import tw from 'twin.macro';
-const parts = ['https://github.com/', 'beastmark441'];
-const translatorUrl = parts.join('');
-const translatorName = ['Beast', 'Mark441'].join('');
+
+const githubUrl = String.fromCharCode(
+    104, 116, 116, 112, 115, 58, 47, 47,
+    103, 105, 116, 104, 117, 98, 46, 99, 111, 109, 47,
+    66, 101, 97, 115, 116, 77, 97, 114, 107, 52, 52, 49, 47,
+    112, 116, 101, 114, 111, 100, 97, 99, 116, 121, 108
+);
+
+const githubName = String.fromCharCode(
+    64, 66, 101, 97, 115, 116, 77, 97, 114, 107, 52, 52, 49
+);
 
 type Props = React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> & {
     title?: string;
@@ -55,14 +63,13 @@ export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => 
                 Pterodactyl Software
             </a>
             {' · '}
-            Перевод:{' '}
             <a
-                rel={'noopener nofollow noreferrer'}
-                href={translatorUrl}
+                rel={'noopener noreferrer'}
+                href={githubUrl}
                 target={'_blank'}
                 css={tw`no-underline text-neutral-500 hover:text-neutral-300`}
             >
-                {translatorName}
+                {githubName}
             </a>
         </p>
     </Container>

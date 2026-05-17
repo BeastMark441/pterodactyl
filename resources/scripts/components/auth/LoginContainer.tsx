@@ -74,7 +74,7 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
             })}
         >
             {({ isSubmitting, setSubmitting, submitForm }) => (
-                <LoginFormContainer title={'Войти в систему, чтобы продолжить'} css={tw`w-full flex`}>
+                <LoginFormContainer title={'Войдите в систему, чтобы продолжить'} css={tw`w-full flex`}>
                     <Field light type={'text'} label={'Имя пользователя или Email'} name={'username'} disabled={isSubmitting} />
                     <div css={tw`mt-6`}>
                         <Field light type={'password'} label={'Пароль'} name={'password'} disabled={isSubmitting} />

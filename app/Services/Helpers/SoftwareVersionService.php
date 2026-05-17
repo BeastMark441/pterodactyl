@@ -2,6 +2,7 @@
 
 namespace Pterodactyl\Services\Helpers;
 
+use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
@@ -30,6 +31,35 @@ class SoftwareVersionService
     public function getPanel(): string
     {
         return Arr::get(self::$result, 'panel') ?? 'error';
+    }
+
+    public function getTranslation(): string
+    {
+        try {
+            $response = Http::timeout(5)
+                ->withHeaders([
+                    'Accept' => 'application/vnd.github+json',
+                    'User-Agent' => 'Pterodactyl-Translation-Checker',
+                ])
+                ->get('https://api.github.com/repos/BeastMark441/pterodactyl/releases/latest');
+
+            if ($response->successful()) {
+                return ltrim((string) $response->json('tag_name'), 'v');
+            }
+        } catch (\Throwable $exception) {
+            //
+        }
+
+        return config('app.translation_version', '1.12.2');
+    }
+
+    public function isLatestTranslation(): bool
+    {
+        return version_compare(
+            config('app.translation_version', '1.12.2'),
+            $this->getTranslation(),
+            '>='
+        );
     }
 
     /**
