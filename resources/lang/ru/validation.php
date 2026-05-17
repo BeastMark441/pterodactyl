@@ -1,0 +1,132 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Сообщения валидации
+    |--------------------------------------------------------------------------
+    */
+
+    'accepted' => 'Поле :attribute должно быть принято.',
+    'active_url' => 'Поле :attribute должно содержать корректный URL.',
+    'after' => 'Поле :attribute должно быть датой после :date.',
+    'after_or_equal' => 'Поле :attribute должно быть датой не раньше :date.',
+    'alpha' => 'Поле :attribute может содержать только буквы.',
+    'alpha_dash' => 'Поле :attribute может содержать только буквы, цифры и дефисы.',
+    'alpha_num' => 'Поле :attribute может содержать только буквы и цифры.',
+    'array' => 'Поле :attribute должно быть массивом.',
+    'before' => 'Поле :attribute должно быть датой до :date.',
+    'before_or_equal' => 'Поле :attribute должно быть датой не позже :date.',
+    'between' => [
+        'numeric' => 'Поле :attribute должно быть между :min и :max.',
+        'file' => 'Размер файла :attribute должен быть от :min до :max килобайт.',
+        'string' => 'Длина поля :attribute должна быть от :min до :max символов.',
+        'array' => 'Поле :attribute должно содержать от :min до :max элементов.',
+    ],
+    'boolean' => 'Поле :attribute должно быть true или false.',
+    'confirmed' => 'Подтверждение поля :attribute не совпадает.',
+    'date' => 'Поле :attribute должно быть корректной датой.',
+    'date_format' => 'Поле :attribute не соответствует формату :format.',
+    'different' => 'Поля :attribute и :other должны отличаться.',
+    'digits' => 'Поле :attribute должно содержать :digits цифр.',
+    'digits_between' => 'Поле :attribute должно содержать от :min до :max цифр.',
+    'dimensions' => 'Поле :attribute имеет недопустимые размеры изображения.',
+    'distinct' => 'Поле :attribute содержит повторяющееся значение.',
+    'email' => 'Поле :attribute должно быть корректным email адресом.',
+    'exists' => 'Выбранное значение для :attribute некорректно.',
+    'file' => 'Поле :attribute должно быть файлом.',
+    'filled' => 'Поле :attribute обязательно для заполнения.',
+    'image' => 'Поле :attribute должно быть изображением.',
+    'in' => 'Выбранное значение для :attribute некорректно.',
+    'in_array' => 'Поле :attribute отсутствует в :other.',
+    'integer' => 'Поле :attribute должно быть целым числом.',
+    'ip' => 'Поле :attribute должно быть корректным IP адресом.',
+    'json' => 'Поле :attribute должно быть корректной JSON строкой.',
+    'max' => [
+        'numeric' => 'Поле :attribute не должно быть больше :max.',
+        'file' => 'Размер файла :attribute не должен превышать :max килобайт.',
+        'string' => 'Длина поля :attribute не должна превышать :max символов.',
+        'array' => 'Поле :attribute не должно содержать более :max элементов.',
+    ],
+    'mimes' => 'Файл :attribute должен быть одного из типов: :values.',
+    'mimetypes' => 'Файл :attribute должен быть одного из типов: :values.',
+    'min' => [
+        'numeric' => 'Поле :attribute должно быть не меньше :min.',
+        'file' => 'Размер файла :attribute должен быть не меньше :min килобайт.',
+        'string' => 'Длина поля :attribute должна быть не меньше :min символов.',
+        'array' => 'Поле :attribute должно содержать не менее :min элементов.',
+    ],
+    'not_in' => 'Выбранное значение для :attribute некорректно.',
+    'numeric' => 'Поле :attribute должно быть числом.',
+    'present' => 'Поле :attribute должно присутствовать.',
+    'regex' => 'Поле :attribute имеет неверный формат.',
+    'required' => 'Поле :attribute обязательно для заполнения.',
+    'required_if' => 'Поле :attribute обязательно, когда :other равно :value.',
+    'required_unless' => 'Поле :attribute обязательно, если :other не входит в :values.',
+    'required_with' => 'Поле :attribute обязательно, когда присутствует :values.',
+    'required_with_all' => 'Поле :attribute обязательно, когда присутствуют :values.',
+    'required_without' => 'Поле :attribute обязательно, когда :values отсутствует.',
+    'required_without_all' => 'Поле :attribute обязательно, когда ни одно из :values не присутствует.',
+    'same' => 'Поля :attribute и :other должны совпадать.',
+    'size' => [
+        'numeric' => 'Поле :attribute должно быть равно :size.',
+        'file' => 'Размер файла :attribute должен быть :size килобайт.',
+        'string' => 'Длина поля :attribute должна быть :size символов.',
+        'array' => 'Поле :attribute должно содержать :size элементов.',
+    ],
+    'string' => 'Поле :attribute должно быть строкой.',
+    'timezone' => 'Поле :attribute должно быть корректной временной зоной.',
+    'unique' => 'Такое значение :attribute уже используется.',
+    'uploaded' => 'Не удалось загрузить :attribute.',
+    'url' => 'Поле :attribute имеет неверный формат URL.',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Пользовательские названия атрибутов
+    |--------------------------------------------------------------------------
+    */
+
+    'attributes' => [
+        'active' => 'Активно',
+        'address' => 'Адрес',
+        'age' => 'Возраст',
+        'city' => 'Город',
+        'code' => 'Код',
+        'content' => 'Контент',
+        'country' => 'Страна',
+        'current_password' => 'Текущий пароль',
+        'date' => 'Дата',
+        'day' => 'День',
+        'default' => 'По умолчанию',
+        'description' => 'Описание',
+        'email' => 'E-Mail адрес',
+        'enabled' => 'Включено',
+        'first_name' => 'Имя',
+        'gender' => 'Пол',
+        'hour' => 'Час',
+        'last_name' => 'Фамилия',
+        'middle_name' => 'Отчество',
+        'minute' => 'Минута',
+        'mobile' => 'Моб. номер',
+        'month' => 'Месяц',
+        'name' => 'Название',
+        'password' => 'Пароль',
+        'password_confirmation' => 'Подтверждение пароля',
+        'phone' => 'Телефон',
+        'remember_me' => 'Запомнить меня',
+        'second' => 'Секунда',
+        'sex' => 'Пол',
+        'size' => 'Размер',
+        'status' => 'Статус',
+        'time' => 'Время',
+        'title' => 'Заголовок',
+        'username' => 'Никнейм',
+        'year' => 'Год',
+    ],
+
+    // Внутренняя логика валидации Pterodactyl
+    'internal' => [
+        'variable_value' => 'переменная :env',
+        'invalid_password' => 'Указанный пароль неверен для этого аккаунта.',
+    ],
+];
