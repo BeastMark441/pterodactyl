@@ -5,6 +5,7 @@ namespace Pterodactyl\Http\Controllers\Admin\Servers;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Pterodactyl\Models\Server;
+use Pterodactyl\Enum\JwtScope;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
 use Pterodactyl\Models\ServerTransfer;
@@ -78,7 +79,8 @@ class ServerTransferController extends Controller
             $token = $this->nodeJWTService
                 ->setExpiresAt(CarbonImmutable::now()->addMinutes(15))
                 ->setSubject($server->uuid)
-                ->handle($transfer->newNode, $server->uuid, 'sha256');
+                ->setScopes(JwtScope::ServerTransfer)
+                ->handle($transfer->newNode, $server->uuid);
 
             // Notify the source node of the pending outgoing transfer.
             $this->daemonTransferRepository->setServer($server)->notify($transfer->newNode, $token);
