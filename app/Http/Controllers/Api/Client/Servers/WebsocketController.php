@@ -4,6 +4,7 @@ namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
 
 use Carbon\CarbonImmutable;
 use Pterodactyl\Models\Server;
+use Pterodactyl\Enum\JwtScope;
 use Illuminate\Http\JsonResponse;
 use Pterodactyl\Models\Permission;
 use Pterodactyl\Services\Nodes\NodeJWTService;
@@ -59,6 +60,7 @@ class WebsocketController extends ClientApiController
                 'server_uuid' => $server->uuid,
                 'permissions' => $permissions,
             ])
+            ->setScopes(JwtScope::Websocket)
             ->handle($node, $user->id . $server->uuid);
 
         $socket = str_replace(['https://', 'http://'], ['wss://', 'ws://'], $node->getConnectionAddress());
