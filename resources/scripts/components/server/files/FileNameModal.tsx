@@ -49,7 +49,7 @@ export default ({ onFileNamed, onDismissed, ...props }: Props) => {
                             autoFocus
                         />
                         <div css={tw`mt-6 text-right`}>
-                            <Button>Создать файл</Button>
+                            <Button type={'submit'}>Создать файл</Button>
                         </div>
                     </Form>
                 </Modal>

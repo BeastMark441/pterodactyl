@@ -3,8 +3,8 @@
 namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
 
 use Carbon\CarbonImmutable;
-use Pterodactyl\Models\Server;
 use Pterodactyl\Enum\JwtScope;
+use Pterodactyl\Models\Server;
 use Illuminate\Http\JsonResponse;
 use Pterodactyl\Models\Permission;
 use Pterodactyl\Services\Nodes\NodeJWTService;

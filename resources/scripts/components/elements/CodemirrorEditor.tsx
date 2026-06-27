@@ -113,6 +113,7 @@ export interface Props {
     onModeChanged: (mode: string) => void;
     fetchContent: (callback: () => Promise<string>) => void;
     onContentSaved: () => void;
+	onContentChanged?: (content: string) => void;
 }
 
 const findModeByFilename = (filename: string) => {
@@ -143,7 +144,16 @@ const findModeByFilename = (filename: string) => {
     return undefined;
 };
 
-export default ({ style, initialContent, filename, mode, fetchContent, onContentSaved, onModeChanged }: Props) => {
+export default ({
+    style,
+    initialContent,
+    filename,
+    mode,
+    fetchContent,
+    onContentSaved,
+    onModeChanged,
+    onContentChanged,
+}: Props) => {
     const [editor, setEditor] = useState<CodeMirror.Editor>();
 
     const ref = useCallback((node) => {
@@ -199,9 +209,19 @@ export default ({ style, initialContent, filename, mode, fetchContent, onContent
         }
     }, [editor, initialContent]);
 
-    useEffect(() => {
+        useEffect(() => {
+        if (!editor || !onContentChanged) return;
+
+        const onChange = () => onContentChanged(editor.getValue());
+
+        editor.on('change', onChange);
+
+        return () => editor.off('change', onChange);
+    }, [editor, onContentChanged]);
+
+	useEffect(() => {
         if (!editor) {
-            fetchContent(() => Promise.reject(new Error('no editor session has been configured')));
+            fetchContent(() => Promise.reject(new Error('Сеанс редактора не настроен.')));
             return;
         }
 

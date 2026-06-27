@@ -76,7 +76,7 @@
                         <div class="form-group">
                             <label class="form-label">Правила ввода</label>
                             <input type="text" name="rules" class="form-control" value="{{ $variable->rules }}" />
-                            <p class="text-muted small">Эти правила определяются с использованием стандартных <a href="https://laravel.com/docs/5.7/validation#available-validation-rules" target="_blank">правил валидации Laravel Framework</a>.</p>
+                            <p class="text-muted small">Эти правила определяются с использованием стандартных <a href="https://laravel.com/docs/11.x/validation#available-validation-rules" target="_blank">правил валидации Laravel Framework</a>.</p>
                         </div>
                     </div>
                     <div class="box-footer">
@@ -129,7 +129,7 @@
                     <div class="form-group">
                         <label class="control-label">Правила ввода <span class="field-required"></span></label>
                         <input type="text" name="rules" class="form-control" value="{{ old('rules', 'required|string|max:20') }}" placeholder="required|string|max:20" />
-                        <p class="text-muted small">Эти правила определяются с использованием стандартных <a href="https://laravel.com/docs/5.7/validation#available-validation-rules" target="_blank">правил валидации Laravel Framework</a>.</p>
+                        <p class="text-muted small">Эти правила определяются с использованием стандартных <a href="https://laravel.com/docs/11.x/validation#available-validation-rules" target="_blank">правил валидации Laravel Framework</a>.</p>
                     </div>
                 </div>
                 <div class="modal-footer">

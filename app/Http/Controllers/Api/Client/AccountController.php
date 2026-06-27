@@ -46,7 +46,7 @@ class AccountController extends ClientApiController
         // of 24 hours. This prevents malicious users from trying to find
         // existing accounts in the system by constantly changing their email.
         if (RateLimiter::tooManyAttempts($key = "user:update-email:{$user->uuid}", 3)) {
-            throw new TooManyRequestsHttpException(message: 'Your email address has been changed too many times today. Please try again later.');
+            throw new TooManyRequestsHttpException(message: 'Ваш адрес электронной почты был изменен слишком много раз за сегодня. Пожалуйста, попробуйте еще раз позже.');
         }
 
         $original = $user->email;
