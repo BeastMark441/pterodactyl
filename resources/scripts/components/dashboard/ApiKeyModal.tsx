@@ -18,7 +18,7 @@ const ApiKeyModal = ({ apiKey }: Props) => {
             <p css={tw`text-sm mb-6`}>
                 Запрошенный вами API-ключ показан ниже. Пожалуйста, сохраните его в надежном месте, чтобы он больше не показывался.
             </p>
-            <pre css={tw`text-sm bg-neutral-900 rounded py-2 px-4 font-mono`}>
+            <pre css={tw`overflow-x-scroll text-sm bg-neutral-900 rounded py-2 px-4 font-mono`}>
                 <CopyOnClick text={apiKey}>
                     <code css={tw`font-mono`}>{apiKey}</code>
                 </CopyOnClick>

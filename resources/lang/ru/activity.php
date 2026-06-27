@@ -21,6 +21,9 @@ return [
         ],
     ],
     'user' => [
+		'user' => [
+            'create' => 'Создан новый пользователь :email',
+        ],
         'account' => [
             'email-changed' => 'Изменён email с :old на :new',
             'password-changed' => 'Изменён пароль',
@@ -67,7 +70,7 @@ return [
             'delete' => 'База данных :name удалена',
         ],
         'file' => [
-            'compress_one' => 'Сжат файл :directory:file',
+            'compress_one' => 'Сжат файл :directory:files.0',
             'compress_other' => 'Сжато :count файлов в :directory',
             'read' => 'Просмотрено содержимое файла :file',
             'copy' => 'Создана копия файла :file',

@@ -1,24 +1,23 @@
-# Security Policy
+# Политика безопасности
 
-## Supported Versions
+## Поддерживаемые версии
 
-Pterodactyl only provides security support for the latest `major.minor` versions of the Panel and Wings software.
-If a security vulnerability is found in an older version but cannot be reproduced on a supported version it will
-not be considered. Additionally, security issues found in unreleased code will be addressed, but do not warrant a
-security advisory.
+Pterodactyl предоставляет поддержку по вопросам безопасности только для последних версий `major.minor` программ Panel и Wings.
+Если уязвимость безопасности найдена в более старой версии, но не воспроизводится в поддерживаемой версии, она
+не будет рассматриваться. Кроме того, проблемы безопасности, найденные в ещё не выпущенном коде, будут исправлены, но не требуют
+публикации уведомления о безопасности.
 
-For example, if the latest version of the Panel is `1.2.5` then we only support security reports for issues that
-occur on `>= 1.2.x` versions of the Panel software. The Panel and Wings have their own versions, but they generally
-follow eachother.
+Например, если последняя версия Panel — `1.2.5`, то поддерживаются только сообщения о проблемах,
+возникающих в версиях Panel `>= 1.2.x`. У Panel и Wings свои собственные версии, но обычно они следуют друг за другом.
 
-## Reporting a Vulnerability
+## Сообщение об уязвимости
 
-Please use our GitHub Security reporting meachnism to quickly alert the team to any security issues you come across,
-or send an email to `security@pterodactyl.io` with the details of your report.
+Пожалуйста, используйте наш механизм отчётов GitHub Security, чтобы быстро уведомить команду о любых найденных вами проблемах безопасности,
+или отправьте письмо с подробностями отчёта на `security@pterodactyl.io`.
 
-We make every effort to respond as soon as possible, although it may take a day or two for us to sync internally and
-determine the severity of the report and its impact. Please, _do not_ use a public facing channel or GitHub issues to
-report sensitive security issues.
+Мы делаем всё возможное, чтобы ответить как можно скорее, хотя нам может потребоваться день или два для внутренней синхронизации и
+определения серьёзности проблемы и её влияния. Пожалуйста, _не_ используйте публичные каналы или GitHub issues для
+сообщения о чувствительных проблемах безопасности.
 
-As part of our process, we will create a security advisory for the affected versions and disclose it publicly, usually
-two to four weeks after a releasing a version that addresses it.
+В рамках нашего процесса мы создадим уведомление о безопасности для затронутых версий и раскроем информацию публично, обычно
+через две-четыре недели после выпуска версии, в которой проблема была исправлена.

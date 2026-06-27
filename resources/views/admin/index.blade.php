@@ -34,10 +34,10 @@
                     <p>
                         Ваша панель <strong>не обновлена!</strong>
                         Последняя версия
-                        <a href="https://github.com/Pterodactyl/Panel/releases/v{{ $version->getPanel() }}" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/Pterodactyl/Panel/releases/v{{ $version->getPanel() }}" target="_blank">
                             <code>{{ $version->getPanel() }}</code>
                         </a>,
-                        а вы используете версию <code>{{ config('app.version') }}</code>.
+                        а вы используете версию <code>{{ config('app.version') }}</code>. Вы можете найти инструкции по обновлению вашей панели. <a href="https://pterodactyl.io/panel/1.0/updating.html">here</a>.
                     </p>
                 @endif
 
