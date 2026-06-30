@@ -203,7 +203,7 @@ class BackupController extends ClientApiController
             throw new BadRequestHttpException('В настоящее время этот сервер не находится в состоянии, позволяющем восстановить резервную копию.');
         }
 
-        if (!$backup->is_successful && is_null($backup->completed_at)) {
+        if (!$backup->is_successful || is_null($backup->completed_at)) {
             throw new BadRequestHttpException('В данный момент эта резервная копия не может быть восстановлена: она не завершена или произошел сбой.');
         }
 
