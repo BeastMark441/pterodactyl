@@ -10,8 +10,8 @@ return [
     | change this value if you are not maintaining your own internal versions.
     */
 
-    'version' => '1.14.0',
-    'translation_version' => '1.14.0',
+    'version' => '1.14.1',
+    'translation_version' => '1.14.1',
     /*
     |--------------------------------------------------------------------------
     | Application Name

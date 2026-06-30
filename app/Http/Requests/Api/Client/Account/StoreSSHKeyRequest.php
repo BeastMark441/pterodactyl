@@ -33,10 +33,22 @@ class StoreSSHKeyRequest extends ClientApiRequest
     public function withValidator(Validator $validator): void
     {
         $validator->after(function () {
+			$publicKey = $this->input('public_key');
+            if (!is_string($publicKey)) {
+                return;
+            }
+
+            $publicKey = trim($publicKey);
+            if (!UserSSHKey::isSupportedPublicKeyMaterial($publicKey)) {
+                $this->validator->errors()->add('public_key', 'Предоставленный открытый ключ недействителен.');
+
+                return;
+            }
+
             try {
-                $this->key = PublicKeyLoader::loadPublicKey($this->input('public_key'));
+                $this->key = PublicKeyLoader::loadPublicKey($publicKey);
             } catch (NoKeyLoadedException $exception) {
-                $this->validator->errors()->add('public_key', 'The public key provided is not valid.');
+                $this->validator->errors()->add('public_key', 'Предоставленный открытый ключ недействителен.');
 
                 return;
             }
@@ -46,12 +58,12 @@ class StoreSSHKeyRequest extends ClientApiRequest
             }
 
             if ($this->key instanceof RSA && $this->key->getLength() < 2048) {
-                $this->validator->errors()->add('public_key', 'RSA keys must be at least 2048 bytes in length.');
+                $this->validator->errors()->add('public_key', 'Длина ключей RSA должна составлять не менее 2048 бит.');
             }
 
             $fingerprint = $this->key->getFingerprint('sha256');
             if ($this->user()->sshKeys()->where('fingerprint', $fingerprint)->exists()) {
-                $this->validator->errors()->add('public_key', 'The public key provided already exists on your account.');
+                $this->validator->errors()->add('public_key', 'Предоставленный открытый ключ уже существует в вашей учетной записи.');
             }
         });
     }
@@ -70,7 +82,7 @@ class StoreSSHKeyRequest extends ClientApiRequest
     public function getKeyFingerprint(): string
     {
         if (!$this->key) {
-            throw new \Exception('The public key was not properly loaded for this request.');
+            throw new \Exception('Открытый ключ не был должным образом загружен для этого запроса.');
         }
 
         return $this->key->getFingerprint('sha256');
